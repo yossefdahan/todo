@@ -1,9 +1,9 @@
 import { createStore, combineReducers } from 'redux'
 
-import { carReducer } from './car.reducer.js'
-import { userReducer } from './user.reducer.js'
-import { reviewReducer } from './review.reducer'
-import { systemReducer } from './system.reducer'
+import { carReducer } from './reducers/car.reducer.js'
+import { userReducer } from './reducers/user.reducer.js'
+import { reviewReducer } from './reducers/review.reducer'
+import { systemReducer } from './reducers/system.reducer'
 
 const rootReducer = combineReducers({
     carModule: carReducer,
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 })
 
 
-const middleware = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__)? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : undefined
+const middleware = (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : undefined
 export const store = createStore(rootReducer, middleware)
 
 
