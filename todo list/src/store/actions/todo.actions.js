@@ -6,10 +6,10 @@ import { ADD_TODO, REMOVE_TODO, SET_TODOS, UNDO_REMOVE_TODO, UPDATE_TODO } from 
 
 
 // Action Creators:
-export function getActionRemoveTodo(TodoId) {
+export function getActionRemoveTodo(todoId) {
     return {
         type: REMOVE_TODO,
-        TodoId
+        todoId
     }
 }
 export function getActionAddTodo(todo) {
@@ -41,10 +41,11 @@ export async function loadTodos() {
 
 }
 
-export async function removeTodo(TodoId) {
+export async function removeTodo(todoId) {
     try {
-        await todoService.remove(TodoId)
-        store.dispatch(getActionRemoveTodo(TodoId))
+        await todoService.remove(todoId)
+        store.dispatch(getActionRemoveTodo(todoId))
+        return todoId
     } catch (err) {
         console.log('Cannot remove todo', err)
         throw err
@@ -63,17 +64,16 @@ export async function addTodo(todo) {
     }
 }
 
-export function updateTodo(todo) {
-    return todoService.save(todo)
-        .then(savedTodo => {
-            console.log('Updated todo:', savedTodo)
-            store.dispatch(getActionUpdateTodo(savedTodo))
-            return savedTodo
-        })
-        .catch(err => {
-            console.log('Cannot save todo', err)
-            throw err
-        })
+export async function updateTodo(todo) {
+    try {
+        const savedTodo = await todoService.save(todo)
+        console.log('Updated todo:', savedTodo)
+        store.dispatch(getActionUpdateTodo(savedTodo))
+        return savedTodo
+    } catch (err) {
+        console.log('Cannot save todo', err)
+        throw err
+    }
 }
 
 // Demo for Optimistic Mutation 

@@ -8,7 +8,7 @@ export function Home() {
     }
     return (<>
         <h1> Welcome To Todo List But Better</h1>
-        <button onClick={() => getStarted()}>Get Started</button>
+        <button onClick={getStarted}>Get Started</button>
     </>
     )
 }

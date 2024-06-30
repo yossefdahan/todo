@@ -8,7 +8,7 @@ export const UNDO_REMOVE_TODO = 'UNDO_REMOVE_TODO'
 
 const initialState = {
     todos: [],
-    lastRemovedtodo: null
+    lastRemovedTodo: null
 }
 
 export function todoReducer(state = initialState, action) {

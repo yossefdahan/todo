@@ -69,7 +69,7 @@ function getEmptyTodo() {
 
 
 // TEST DATA
-// storageService.post(STORAGE_KEY, { todo: 'buy milk' }).then(x => console.log(x))
+storageService.post(STORAGE_KEY, { todo: 'buy milk', isDone: false }).then(x => console.log(x))
 
 
 
